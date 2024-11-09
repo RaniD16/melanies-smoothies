@@ -51,3 +51,4 @@ import requests
 #fruityvice_response = requests.get("https://www.fruityvice.com/api/fruit/watermelon")
 fruityvice_response = requests.get("https://coffee.alexflipnote.dev/random")
 st.text(fruityvice_response)
+fv_df = st.dataframe(data=fruityvice_response.json(), us_container_width=True)
