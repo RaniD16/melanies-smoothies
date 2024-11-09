@@ -2,6 +2,8 @@
 import streamlit as st
 from snowflake.snowpark.functions import col
 
+
+
 # Write directly to the app
 st.title(":cup_with_straw: Customize Your Smoothie :cup_with_straw:")
 st.write(
@@ -25,8 +27,7 @@ ingredients_list = st.multiselect(
     )
 
 if ingredients_list:
-    
-            
+
     ingredients_string=''
     for fruit_chosen in ingredients_list:
         ingredients_string +=fruit_chosen+' '
@@ -44,3 +45,8 @@ if ingredients_list:
         session.sql(my_insert_stmt).collect()
     
         st.success('Your Smoothie is ordered!', icon="✅")
+
+#New Section to display fruityvice nutrition information
+import requests
+fruityvice_response = requests.get("https:://fruityvice.com/api/fruits/watermelon")
+st.text(fruityvice_response)
